@@ -42,7 +42,7 @@ export default function BannerRoute() {
     <form id={form.id} onSubmit={form.onSubmit} action={action}>
       <div className="flex items-center gap-x-4">
         <Button variant="outline" size="icon" asChild>
-          <Link href="/dashboard/products">
+          <Link href="/dashboard/banner">
             <ChevronLeft className="w-4 h-4" />
           </Link>
         </Button>

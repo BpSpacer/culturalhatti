@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="mt-16 mb-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
         <p className="text-xs leading-5 text-gray-700">
-          &copy; 2024 <span className="text-primary">CulturalHatti.</span> All Rights Reserved | Creators <Link href={"https://www.linkedin.com/in/ahsan-kamall/"}>Ahsan Kamal</Link> & <Link href={"https://www.linkedin.com/in/syedalyanahmedshahbukhari/"}>Alyan Ahmad</Link>
+          &copy; 2024 <span className="text-primary">CakesByTehreem</span>. All Rights Reserved | Powered by <Link className="font-bold underline" href={'https://www.linkedin.com/in/ahsan-kamall/'}>Ahsan</Link>
         </p>
       </div>
     </footer>

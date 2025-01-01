@@ -2,21 +2,7 @@ import prisma from "@/app/lib/db";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-// Define types for User and Order
-type User = {
-  firstName: string;
-  profileImage: string | null;
-  email: string;
-};
-
-type Order = {
-  id: string;
-  amount: number;
-  User: User | null;
-};
-
-// Fetch data function
-async function getData(): Promise<Order[]> {
+async function getData() {
   const data = await prisma.order.findMany({
     select: {
       amount: true,
@@ -38,7 +24,6 @@ async function getData(): Promise<Order[]> {
   return data;
 }
 
-// RecentSales component
 export async function RecentSales() {
   const data = await getData();
   return (
@@ -47,13 +32,10 @@ export async function RecentSales() {
         <CardTitle>Recent sales</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-8">
-        {data.map((item: Order) => (
+        {data.map((item) => (
           <div className="flex items-center gap-4" key={item.id}>
             <Avatar className="hidden sm:flex h-9 w-9">
-              <AvatarImage
-                src={item.User?.profileImage || ""}
-                alt="Avatar Image"
-              />
+              <AvatarImage src={item.User?.profileImage} alt="Avatar Image" />
               <AvatarFallback>
                 {item.User?.firstName.slice(0, 3)}
               </AvatarFallback>
@@ -65,7 +47,7 @@ export async function RecentSales() {
               </p>
             </div>
             <p className="ml-auto font-medium">
-              +${new Intl.NumberFormat("en-US").format(item.amount / 100)}
+              +Rs{new Intl.NumberFormat("en-US").format(item.amount / 100)}
             </p>
           </div>
         ))}
