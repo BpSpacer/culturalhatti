@@ -3,6 +3,15 @@ import prisma from "@/app/lib/db";
 import { notFound } from "next/navigation";
 import { unstable_noStore as noStore } from "next/cache";
 
+// Define a type for the product
+type Product = {
+  id: string;
+  name: string;
+  images: string[];
+  price: number;
+  description: string;
+};
+
 async function getData(productCategory: string) {
   switch (productCategory) {
     case "all": {
@@ -21,7 +30,7 @@ async function getData(productCategory: string) {
 
       return {
         title: "All Products",
-        data: data,
+        data: data as Product[], // Explicitly typing the data
       };
     }
     case "saraiki": {
@@ -41,7 +50,7 @@ async function getData(productCategory: string) {
 
       return {
         title: "Products from Kpk",
-        data: data,
+        data: data as Product[], // Explicitly typing the data
       };
     }
     case "sindhi": {
@@ -61,7 +70,7 @@ async function getData(productCategory: string) {
 
       return {
         title: "Products from Sindh",
-        data: data,
+        data: data as Product[], // Explicitly typing the data
       };
     }
     case "punjabi": {
@@ -81,7 +90,7 @@ async function getData(productCategory: string) {
 
       return {
         title: "Products from Punjab",
-        data: data,
+        data: data as Product[], // Explicitly typing the data
       };
     }
     case "pashtun": {
@@ -101,7 +110,7 @@ async function getData(productCategory: string) {
 
       return {
         title: "Products from Kpk",
-        data: data,
+        data: data as Product[], // Explicitly typing the data
       };
     }
     case "balochi": {
@@ -121,7 +130,7 @@ async function getData(productCategory: string) {
 
       return {
         title: "Products from Balochistan",
-        data: data,
+        data: data as Product[], // Explicitly typing the data
       };
     }
     case "kashmiri": {
@@ -141,7 +150,7 @@ async function getData(productCategory: string) {
 
       return {
         title: "Products from Kashmir",
-        data: data,
+        data: data as Product[], // Explicitly typing the data
       };
     }
     default: {
@@ -161,7 +170,7 @@ export default async function CategoriesPage({
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 className="font-semibold text-3xl my-5">{title}</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {data.map((item) => (
+        {data.map((item: Product) => ( // Typing item here as well
           <ProductCard item={item} key={item.id} />
         ))}
       </div>
