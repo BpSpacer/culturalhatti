@@ -33,9 +33,16 @@ async function getData() {
 export async function DashboardStats() {
   const { products, user, order } = await getData();
 
-  const totalAmount = order.reduce((accumalator, currentValue) => {
+  // Define the type for the order item
+  type OrderItem = {
+    amount: number;
+  };
+
+  // Type the parameters of reduce
+  const totalAmount = order.reduce((accumalator: number, currentValue: OrderItem) => {
     return accumalator + currentValue.amount;
   }, 0);
+
   return (
     <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
       <Card>
