@@ -267,11 +267,11 @@ export async function checkOut() {
       success_url:
         process.env.NODE_ENV === "development"
           ? "http://localhost:3000/payment/success"
-          : "https://ecomahsan.vercel.app/payment/success",
+          : "https://culturalhatti.vercel.app/payment/success",
       cancel_url:
         process.env.NODE_ENV === "development"
           ? "http://localhost:3000/payment/cancel"
-          : "https://ecomahsan.vercel.app/payment/cancel",
+          : "https://culturalhatti.vercel.app/payment/cancel",
       metadata: {
         userId: user.id,
       },
