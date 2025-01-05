@@ -1,6 +1,6 @@
 "use client";
 
-import { SellProduct, type State } from "@/app/selleractions";
+import { SellProduct, type State } from '@/app/selleractions'
 import {
   CardContent,
   CardDescription,
@@ -11,18 +11,18 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { type JSONContent } from "@tiptap/react";
-import { useEffect, useState } from "react";
-import { useFormState } from 'react-dom';
+import { useActionState, useEffect, useState } from "react";
+import { useFormState } from "react-dom";
 import { toast } from "sonner";
-import { SelectCategory } from "../sellerSelectCategory";
+import { SelectCategory } from '../sellerSelectCategory';
 import { Textarea } from "@/components/ui/textarea";
-import { TipTapEditor } from "../sellerEditor";
-import { UploadDropzone } from "@/app/lib/selleruploadthing";
-import { Submitbutton } from "../sellerSubmitButtons";
+import { TipTapEditor } from '../sellerEditor';
+import { UploadDropzone } from '@/app/lib/uplaodthing';
+import { Submitbutton } from '../sellerSubmitButtons';
 
 export function SellForm() {
   const initalState: State = { message: "", status: undefined };
-  const [state, formAction] = useFormState(SellProduct, initalState);
+  const [state, formAction] = useActionState(SellProduct, initalState);
   const [json, setJson] = useState<null | JSONContent>(null);
   const [images, setImages] = useState<null | string[]>(null);
   const [productFile, SetProductFile] = useState<null | string>(null);
