@@ -8,8 +8,10 @@ import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { unstable_noStore as noStore } from "next/cache";
-
 import { redirect } from "next/navigation";
+import { Input } from "@/components/ui/input"; // Assuming Input component is from ShadCN
+import { Label } from "@/components/ui/label"; // Assuming Label component is from ShadCN
+import { Textarea } from "@/components/ui/textarea"; // Assuming Textarea component is from ShadCN
 
 export default async function BagRoute() {
   noStore();
@@ -76,14 +78,62 @@ export default async function BagRoute() {
               </div>
             </div>
           ))}
+          
+          {/* Address Form */}
           <div className="mt-10">
-            <div className="flex items-center justify-between font-medium">
-              <p>Subtotal:</p>
-              <p>${new Intl.NumberFormat("en-US").format(totalPrice)}</p>
-            </div>
-
-            <form action={checkOut}>
-              <ChceckoutButton />
+            <h3 className="text-lg font-medium">Enter Your Address</h3>
+            <form action={checkOut} className="space-y-6 mt-6">
+              <div>
+                <Label htmlFor="addressLine1">Street Address</Label>
+                <Input
+                  id="addressLine1"
+                  name="addressLine1"
+                  required
+                  placeholder="Street Address"
+                />
+              </div>
+              <div>
+                <Label htmlFor="city">City</Label>
+                <Input
+                  id="city"
+                  name="city"
+                  required
+                  placeholder="City"
+                />
+              </div>
+              <div className="flex gap-4">
+                <div className="w-1/2">
+                  <Label htmlFor="state">State</Label>
+                  <Input
+                    id="state"
+                    name="state"
+                    required
+                    placeholder="State"
+                  />
+                </div>
+                <div className="w-1/2">
+                  <Label htmlFor="zip">ZIP Code</Label>
+                  <Input
+                    id="zip"
+                    name="zip"
+                    required
+                    placeholder="ZIP Code"
+                  />
+                </div>
+              </div>
+              <div>
+                <Label htmlFor="notes">Additional Notes</Label>
+                <Textarea
+                  id="notes"
+                  name="notes"
+                  placeholder="Add any notes (optional)"
+                />
+              </div>
+              <div className="mt-6">
+                <Button type="submit" className="w-full">
+                  Proceed to Checkout
+                </Button>
+              </div>
             </form>
           </div>
         </div>

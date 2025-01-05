@@ -2,10 +2,6 @@ import prisma from "@/app/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, PartyPopper, ShoppingBag, User2 } from "lucide-react";
 
-type Order = {
-  amount: number;
-};
-
 async function getData() {
   const [user, products, order] = await Promise.all([
     prisma.user.findMany({
@@ -37,10 +33,9 @@ async function getData() {
 export async function DashboardStats() {
   const { products, user, order } = await getData();
 
-  const totalAmount = order.reduce((accumalator: number, currentValue: Order) => {
+  const totalAmount = order.reduce((accumalator, currentValue) => {
     return accumalator + currentValue.amount;
   }, 0);
-
   return (
     <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
       <Card>
@@ -63,7 +58,7 @@ export async function DashboardStats() {
         <CardContent>
           <p className="text-2xl font-bold">+{order.length}</p>
           <p className="text-xs text-muted-foreground">
-            Total Sales on CakesByTehreem
+            Total Sales on Hatti
           </p>
         </CardContent>
       </Card>

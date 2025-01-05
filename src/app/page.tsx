@@ -3,8 +3,11 @@ import Customizer from './pages/Customizer';
 import Home from './pages/Home';
 import { Hero } from './components/storefront/Hero';
 import { CategoriesSelection } from './components/storefront/CategorySelection';
+import { FeaturedProducts } from './components/storefront/FeaturedProducts';
 import { Navbar } from './components/storefront/Navbar';
 import { Footer } from './components/storefront/Footer';
+import Geolocation from './components/geolocation';
+import { ProductRow } from './components/sellerProductRow';
 import arrow from "@/public/arrow.png";
 import Image from "next/image";
 import Link from 'next/link';
@@ -40,6 +43,9 @@ export default function Main() {
         <h1 className="text-2xl sm:text-5xl lg:text-6xl font-semibold">Find the best Culture</h1>
         <h1 className="text-primary text-2xl sm:text-5xl lg:text-6xl font-semibold">
           of{" "}
+          <span className="inline-block">
+            <Geolocation />
+          </span>
         </h1>
 
         <p className="lg:text-lg text-muted-foreground mx-auto mt-5 w-[90%] font-normal text-base">
@@ -48,10 +54,18 @@ export default function Main() {
         </p>
       </section>
 
-      <section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <CategoriesSelection />
-      </section>
 
+
+
+      <section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <ProductRow category="newest" />
+        <ProductRow category="sindhi" />
+        <ProductRow category="punjabi" />
+        <ProductRow category="pashtun" />
+        <ProductRow category="balochi" />
+        <ProductRow category="kashmiri" />
+        <ProductRow category="saraiki" />
+      </section>
 
       <Footer />
     </>

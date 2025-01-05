@@ -3,20 +3,7 @@ import prisma from "@/app/lib/db";
 import { notFound } from "next/navigation";
 import { unstable_noStore as noStore } from "next/cache";
 
-type Product = {
-  name: string;
-  images: string[];
-  price: number;
-  id: string;
-  description: string;
-};
-
-type GetDataReturn = {
-  title: string;
-  data: Product[];
-};
-
-async function getData(productCategory: string): Promise<GetDataReturn> {
+async function getData(productCategory: string) {
   switch (productCategory) {
     case "all": {
       const data = await prisma.product.findMany({
@@ -171,10 +158,10 @@ export default async function CategoriesPage({
   noStore();
   const { data, title } = await getData(params.name);
   return (
-    <section>
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 className="font-semibold text-3xl my-5">{title}</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {data.map((item: Product) => (
+        {data.map((item) => (
           <ProductCard item={item} key={item.id} />
         ))}
       </div>
