@@ -2,7 +2,7 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { ZodStringDef, z } from "zod";
 import prisma from "./lib/db-supabase";
-import { type CategoryTypes } from "../../../client/prisma/generated/supabase-client";
+import { type CategoryTypes } from "../../prisma/generated/supabase-client";
 import { stripe } from "./lib/stripe";
 import { redirect } from "next/navigation";
 

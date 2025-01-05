@@ -1,6 +1,6 @@
 "use client";
 
-import { SellProduct, type State } from '@/app/selleractions'
+import { SellProduct, type State } from "@/app/selleractions";
 import {
   CardContent,
   CardDescription,
@@ -11,13 +11,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { type JSONContent } from "@tiptap/react";
-import { useActionState, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useActionState } from "react";
 import { toast } from "sonner";
-import { SelectCategory } from '../sellerSelectCategory';
+import { SelectCategory } from "../sellerSelectCategory";
 import { Textarea } from "@/components/ui/textarea";
-import { TipTapEditor } from '../sellerEditor';
-import { UploadDropzone } from '@/app/lib/uplaodthing';
-import { Submitbutton } from '../sellerSubmitButtons';
+import { TipTapEditor } from "../sellerEditor";
+import { UploadDropzone } from "@/app/lib/uplaodthing";
+import { Submitbutton } from "../sellerSubmitButtons";
+
 
 export function SellForm() {
   const initalState: State = { message: "", status: undefined };
