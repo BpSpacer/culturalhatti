@@ -1,6 +1,6 @@
 import { ProductCard } from "@/app/components/sellerProductCard";
 import prisma from "@/app/lib/db-supabase";
-import { type CategoryTypes } from "E:/culturethree/client/prisma/generated/supabase-client";
+import { type CategoryTypes } from '../../../../prisma/generated/supabase-client'
 import { notFound } from "next/navigation";
 import { unstable_noStore as noStore } from "next/cache";
 
